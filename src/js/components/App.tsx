@@ -6,7 +6,12 @@ import AppState from '../types/state';
 const App = (props: AppProps) => {
   const { info } = props;
   return (
-    <div>
+    <div className="container-fluid">
+      <nav className="navbar navbar-dark bg-primary">
+        <a className="navbar-brand" href="/">
+          Yolo Documentation
+        </a>
+      </nav>
       test
       {info}
     </div>
