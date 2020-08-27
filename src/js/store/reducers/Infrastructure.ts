@@ -1,6 +1,7 @@
 import { Infrastructure } from '../../types/state/Infrastructure';
 
 const initState: Infrastructure.State = {
+  yaml: '',
   info: {
     description: 'adsf',
   },
@@ -8,8 +9,13 @@ const initState: Infrastructure.State = {
 
 export default (state = initState, action: Infrastructure.Actions.Types): Infrastructure.State => {
   switch (action.type) {
-    default: {
+    case 'UPDATE_YAML':
+      return {
+        ...state,
+        yaml: action.yaml,
+      };
+
+    default:
       return state;
-    }
   }
 };
