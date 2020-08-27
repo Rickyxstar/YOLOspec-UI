@@ -1,0 +1,32 @@
+yolo: "1.0"
+info:
+  description: A sample application
+
+network:
+  main:
+    cidr: 192.168.1.0/24
+    dns:
+      - 192.168.10.2
+      - 192.168.10.3
+    gateway: 192.168.0.0/24
+    subnets:
+      api:
+        cidr: 192.168.1.0/28
+      database:
+        cidr: 192.168.1.16/28
+      management:
+        cidr: 192.168.1.32/29
+
+host:
+  api:
+    for: [i = 1, i=<10, i++]
+    host_name: api${i}
+    ip: 192.168.1.${2+i}
+    subnet: network.main.api
+    os: os.centos7
+
+os:
+  centos7:
+    package_manager: yum
+  ubuntu:
+    package_manager: apt-get
