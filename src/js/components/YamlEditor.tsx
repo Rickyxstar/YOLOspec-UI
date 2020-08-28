@@ -19,15 +19,12 @@ class YamlEditor extends React.Component<YamlEditorProps, YamlEditorState> {
 
     try {
       parsedYaml = YAML.parse(e.target.value);
-    } catch (e) {
-      hasError = true
+    } catch (_error) {
+      hasError = true;
     }
 
     this.setState({
-      hasError: hasError,
-    });
-
-    this.setState({
+      hasError,
       yaml: e.target.value,
     });
   }
