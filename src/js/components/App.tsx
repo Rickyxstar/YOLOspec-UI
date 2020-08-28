@@ -1,11 +1,7 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
-import AppState from '../types/state';
-import { updateYAML } from '../store/actions/Infrastructure';
+import YamlEditor from './YamlEditor';
 
-const App = (props: AppProps) => {
-  const { yaml, updateYAMLProp } = props;
+export default () => {
   return (
     <div className="container-fluid">
       <nav className="navbar navbar-dark bg-primary">
@@ -15,7 +11,7 @@ const App = (props: AppProps) => {
       </nav>
       <div className="row">
         <div className="col-sm-4">
-          <textarea value={yaml} onChange={(e) => updateYAMLProp(e.target.value)} />
+          <YamlEditor />
         </div>
         <div className="col-sm-8">
           Documentation soon
@@ -24,23 +20,3 @@ const App = (props: AppProps) => {
     </div>
   );
 };
-
-interface AppProps {
-  yaml: string
-  updateYAMLProp: typeof updateYAML
-}
-
-const mapState = (state: AppState) => (
-  {
-    yaml: state.infrastructure.yaml,
-  }
-);
-
-const dispatchProps = (dispatch: Dispatch) => bindActionCreators(
-  {
-    updateYAMLProp: updateYAML,
-  },
-  dispatch,
-);
-
-export default connect(mapState, dispatchProps)(App);
