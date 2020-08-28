@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import YAML from 'yaml';
 
 class YamlEditor extends React.Component<YamlEditorProps, YamlEditorState> {
   constructor(props: YamlEditorProps) {
@@ -13,8 +14,20 @@ class YamlEditor extends React.Component<YamlEditorProps, YamlEditorState> {
   }
 
   changeYAML(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    let parsedYaml;
+    let hasError = false;
+
+    try {
+      parsedYaml = YAML.parse(e.target.value);
+    } catch (e) {
+      hasError = true
+    }
+
     this.setState({
-      hasError: true,
+      hasError: hasError,
+    });
+
+    this.setState({
       yaml: e.target.value,
     });
   }
