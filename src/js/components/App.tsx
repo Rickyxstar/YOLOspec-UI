@@ -1,5 +1,6 @@
 import * as React from 'react';
 import YamlEditor from './YamlEditor';
+import Visualization from './Visualization';
 
 export default () => (
   <div className="container-fluid">
@@ -13,7 +14,7 @@ export default () => (
         <YamlEditor />
       </div>
       <div className="col-sm-8">
-        Documentation soon
+        <Visualization />
       </div>
     </div>
   </div>
