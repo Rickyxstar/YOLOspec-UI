@@ -10,7 +10,7 @@ export default () => (
       </a>
     </nav>
     <div className="yolo-row">
-        <YamlEditor />
+      <YamlEditor />
       <div className="col-sm-8">
         <Visualization />
       </div>

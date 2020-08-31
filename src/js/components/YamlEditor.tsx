@@ -46,7 +46,7 @@ class YamlEditor extends React.Component<YamlEditorProps, YamlEditorState> {
     const errorClass = hasError ? 'has-error' : '';
     return (
       <div className={`yaml-editor ${errorClass}`}>
-        <textarea autoFocus={true} value={yaml} onChange={this.changeYAML.bind(this)} />
+        <textarea value={yaml} onChange={this.changeYAML.bind(this)} />
       </div>
     );
   }
