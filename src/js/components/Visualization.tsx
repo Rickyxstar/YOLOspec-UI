@@ -25,6 +25,12 @@ const Visualization = (props: VisualizationProps) => {
               <strong>Netmask:</strong>
               {network.netmask}
             </li>
+            <li>
+              <strong>DNS:</strong>
+              <ul>
+                {network.dns.map((dns) => (<li>{dns}</li>))}
+              </ul>
+            </li>
           </ul>
         </div>
       ))}
