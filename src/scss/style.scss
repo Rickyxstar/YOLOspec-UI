@@ -38,6 +38,15 @@
         @extend .p-2;
 
         background: rgba($color: $info, $alpha: 0.6);
+
+        .subnet {
+          @extend .border;
+          @extend .border-white;
+          @extend .rounded;
+          @extend .p-2;
+
+          background: rgba($color: #fff, $alpha: 0.2);
+        }
       }
     }
   }

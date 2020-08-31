@@ -18,7 +18,9 @@ export interface Network extends BaseResource {
   cidr: string
   dns: string[]
   gateway: string
-  subnets: []
+  subnets: {
+    [x: string]: Subnet
+  }
 }
 
 export interface Subnet extends BaseResource {

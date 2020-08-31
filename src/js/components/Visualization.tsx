@@ -13,7 +13,7 @@ const Visualization = (props: VisualizationProps) => {
       {networks.map((network) => (
         <div className="network" key={network.name}>
           <h4>
-            Network:
+            <span>Network: </span>
             {network.name}
           </h4>
           <ul>
@@ -36,6 +36,28 @@ const Visualization = (props: VisualizationProps) => {
               </ul>
             </li>
           </ul>
+          {network.subnets.map((subnet) => (
+            <div className="subnet" key={subnet.name}>
+              <h4>
+                <span>Subnet: </span>
+                {subnet.name}
+              </h4>
+              <ul>
+                <li>
+                  <strong>CIDR: </strong>
+                  {subnet.cidr}
+                </li>
+                <li>
+                  <strong>Netmask: </strong>
+                  {subnet.netmask}
+                </li>
+                <li>
+                  <strong>Available IPs: </strong>
+                  {subnet.availableIPs}
+                </li>
+              </ul>
+            </div>
+          ))}
         </div>
       ))}
     </div>
