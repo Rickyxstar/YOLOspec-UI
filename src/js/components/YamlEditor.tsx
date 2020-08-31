@@ -22,6 +22,7 @@ class YamlEditor extends React.Component<YamlEditorProps, YamlEditorState> {
     try {
       const yolo = new Yolo(YAML.parse(e.target.value));
       updateInfrastructureInfo(yolo.getInfo());
+      yolo.getNetworks();
     } catch (_error) {
       hasError = true;
     }
