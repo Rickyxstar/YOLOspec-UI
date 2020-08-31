@@ -40,7 +40,10 @@ export default class {
 
     const networkNames = Object.keys(this.yolo.network);
     for (let i = 0; i < networkNames.length; i += 1) {
-      networks.push(this.yolo.network[networkNames[i]]);
+      networks.push(new Network({
+        ...this.yolo.network[networkNames[i]],
+        name: networkNames[i],
+      }));
     }
 
     return networks;

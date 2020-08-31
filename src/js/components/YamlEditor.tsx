@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import YAML from 'yaml';
 import Yolo from '../yoloparser';
-import { updateInfo } from '../store/actions/Infrastructure';
+import { updateInfo, updateNetworks } from '../store/actions/Infrastructure';
 
 class YamlEditor extends React.Component<YamlEditorProps, YamlEditorState> {
   constructor(props: YamlEditorProps) {
@@ -17,12 +17,12 @@ class YamlEditor extends React.Component<YamlEditorProps, YamlEditorState> {
 
   changeYAML(e: React.ChangeEvent<HTMLTextAreaElement>) {
     let hasError = false;
-    const { updateInfrastructureInfo } = this.props;
+    const { updateInfrastructureInfo, updateInfrastructureNetworks } = this.props;
 
     try {
       const yolo = new Yolo(YAML.parse(e.target.value));
       updateInfrastructureInfo(yolo.getInfo());
-      yolo.getNetworks();
+      updateInfrastructureNetworks(yolo.getNetworks());
     } catch (_error) {
       hasError = true;
     }
@@ -45,7 +45,8 @@ class YamlEditor extends React.Component<YamlEditorProps, YamlEditorState> {
 }
 
 interface YamlEditorProps {
-  updateInfrastructureInfo: typeof updateInfo
+  updateInfrastructureInfo: typeof updateInfo,
+  updateInfrastructureNetworks: typeof updateNetworks,
 }
 
 interface YamlEditorState {
@@ -58,6 +59,7 @@ const mapState = () => ({});
 const dispatchProps = (dispatch: Dispatch) => bindActionCreators(
   {
     updateInfrastructureInfo: updateInfo,
+    updateInfrastructureNetworks: updateNetworks,
   },
   dispatch,
 );

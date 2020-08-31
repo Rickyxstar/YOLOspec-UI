@@ -11,9 +11,7 @@ export default () => (
     </nav>
     <div className="yolo-row">
       <YamlEditor />
-      <div className="col-sm-8">
-        <Visualization />
-      </div>
+      <Visualization />
     </div>
   </div>
 );

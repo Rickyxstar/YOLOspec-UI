@@ -6,6 +6,7 @@ const initState: Infrastructure.State = {
     title: '',
     description: '',
   },
+  networks: [],
 };
 
 export default (state = initState, action: Infrastructure.Actions.Types): Infrastructure.State => {
@@ -20,6 +21,12 @@ export default (state = initState, action: Infrastructure.Actions.Types): Infras
       return {
         ...state,
         info: action.info,
+      };
+
+    case 'UPDATE_NETWORKS':
+      return {
+        ...state,
+        networks: action.networks,
       };
 
     default:

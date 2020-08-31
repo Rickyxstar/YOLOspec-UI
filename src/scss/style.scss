@@ -27,5 +27,18 @@
         background-color: transparent;
       }
     }
+
+    .visualization {
+      @extend .col-sm-8;
+
+      .network {
+        @extend .border;
+        @extend .border-info;
+        @extend .rounded;
+        @extend .p-2;
+
+        background: rgba($color: $info, $alpha: 0.6);
+      }
+    }
   }
 }
