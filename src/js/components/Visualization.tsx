@@ -18,12 +18,16 @@ const Visualization = (props: VisualizationProps) => {
           </h4>
           <ul>
             <li>
-              <strong>CIDR:</strong>
+              <strong>CIDR: </strong>
               {network.cidr}
             </li>
             <li>
-              <strong>Netmask:</strong>
+              <strong>Netmask: </strong>
               {network.netmask}
+            </li>
+            <li>
+              <strong>Gateway: </strong>
+              {network.gateway}
             </li>
             <li>
               <strong>DNS:</strong>
