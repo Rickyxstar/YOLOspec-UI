@@ -1,1 +1,31 @@
 @import "~bootstrap/scss/bootstrap";
+
+.main {
+  min-height: 100vh;
+
+  .yolo-row {
+    @extend .row;
+    @extend .d-flex;
+    @extend .align-items-stretch;
+
+    .yaml-editor {
+      @extend .col-sm-4;
+      @extend .bg-light;
+      @extend .d-flex;
+      @extend .align-items-stretch;
+
+      min-height: 100vh;
+
+      textarea {
+        @extend .mt-3;
+        @extend .mb-3;
+
+        width: 100%;
+        border: 0;
+        outline: none;
+        resize: none;
+        background-color: transparent;
+      }
+    }
+  }
+}
