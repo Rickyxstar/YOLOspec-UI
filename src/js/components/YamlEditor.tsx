@@ -16,24 +16,15 @@ class YamlEditor extends React.Component<YamlEditorProps, YamlEditorState> {
   }
 
   changeYAML(e: React.ChangeEvent<HTMLTextAreaElement>) {
-    let parsedYaml;
-    let yolo: Yolo = new Yolo({});
     let hasError = false;
     const { updateInfrastructureInfo } = this.props;
 
     try {
-      parsedYaml = YAML.parse(e.target.value);
+      const yolo = new Yolo(YAML.parse(e.target.value));
+      updateInfrastructureInfo(yolo.getInfo());
     } catch (_error) {
       hasError = true;
     }
-
-    try {
-      yolo = new Yolo(parsedYaml);
-    } catch (_error) {
-      hasError = true;
-    }
-
-    updateInfrastructureInfo(yolo.getInfo());
 
     this.setState({
       hasError,
