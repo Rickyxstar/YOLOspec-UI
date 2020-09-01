@@ -1,13 +1,7 @@
 import { Infrastructure } from '../../types/state/Infrastructure';
 import { Info } from '../../types/yolo';
 import Network from '../../yoloparser/network';
-
-export const updateYAML = (yaml: string): Infrastructure.Actions.Types => (
-  {
-    type: Infrastructure.Actions.UPDATE_YAML,
-    yaml,
-  }
-);
+import Host from '../../yoloparser/host';
 
 export const updateInfo = (info: Info): Infrastructure.Actions.Types => (
   {
@@ -20,5 +14,12 @@ export const updateNetworks = (networks: Network[]): Infrastructure.Actions.Type
   {
     type: Infrastructure.Actions.UPDATE_NETWORKS,
     networks,
+  }
+);
+
+export const updateHosts = (hosts: Host[]): Infrastructure.Actions.Types => (
+  {
+    type: Infrastructure.Actions.UPDATE_HOSTS,
+    hosts,
   }
 );

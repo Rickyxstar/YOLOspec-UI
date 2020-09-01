@@ -1,22 +1,16 @@
 import { Infrastructure } from '../../types/state/Infrastructure';
 
 const initState: Infrastructure.State = {
-  yaml: '',
   info: {
     title: '',
     description: '',
   },
   networks: [],
+  hosts: [],
 };
 
 export default (state = initState, action: Infrastructure.Actions.Types): Infrastructure.State => {
   switch (action.type) {
-    case 'UPDATE_YAML':
-      return {
-        ...state,
-        yaml: action.yaml,
-      };
-
     case 'UPDATE_INFO':
       return {
         ...state,
@@ -27,6 +21,12 @@ export default (state = initState, action: Infrastructure.Actions.Types): Infras
       return {
         ...state,
         networks: action.networks,
+      };
+
+    case 'UPDATE_HOSTS':
+      return {
+        ...state,
+        hosts: action.hosts,
       };
 
     default:

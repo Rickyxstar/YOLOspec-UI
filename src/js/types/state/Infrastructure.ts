@@ -1,22 +1,18 @@
 import { Info } from '../yolo';
 import Network from '../../yoloparser/network';
+import Host from '../../yoloparser/host';
 
 export namespace Infrastructure {
   export interface State {
-    yaml: string
     info: Info
     networks: Network[]
+    hosts: Host[]
   }
 
   export namespace Actions {
-    export const UPDATE_YAML = 'UPDATE_YAML';
     export const UPDATE_INFO = 'UPDATE_INFO';
     export const UPDATE_NETWORKS = 'UPDATE_NETWORKS';
-
-    export interface UpdateYAML {
-      type: typeof UPDATE_YAML,
-      yaml: string
-    }
+    export const UPDATE_HOSTS = 'UPDATE_HOSTS';
 
     export interface UpdateInfo {
       type: typeof UPDATE_INFO,
@@ -28,6 +24,11 @@ export namespace Infrastructure {
       networks: Network[]
     }
 
-    export type Types = UpdateYAML | UpdateInfo | updateNetworks;
+    export interface updateHosts {
+      type: typeof UPDATE_HOSTS,
+      hosts: Host[]
+    }
+
+    export type Types = UpdateInfo | updateNetworks | updateHosts;
   }
 }
