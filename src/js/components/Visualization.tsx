@@ -7,20 +7,28 @@ import Host from '../yoloparser/host';
 import NetworkComponent from './Network';
 
 const Visualization = (props: VisualizationProps) => {
-  const { info, networks } = props;
+  const {
+    info,
+    networks,
+    hosts,
+    showSubnetHosts,
+  } = props;
   return (
     <div className="visualization">
       <h1>{info.title}</h1>
       <p>{info.description}</p>
       {networks.map((network) => (<NetworkComponent data={network} key={network.name} />))}
+      {hosts.filter((host) => host.subnet === showSubnetHosts)
+        .map((host) => (<div>{host.hostname}</div>))}
     </div>
   );
 };
 
 interface VisualizationProps {
   info: Info,
-  networks: Network[],
-  hosts: Host[];
+  networks: Network[]
+  hosts: Host[]
+  showSubnetHosts: string
 }
 
 const mapState = (state: AppState) => ({
