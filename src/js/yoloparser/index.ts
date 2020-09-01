@@ -56,7 +56,7 @@ export default class {
     const hostNames = Object.keys(this.yolo.host);
     for (let i = 0; i < hostNames.length; i += 1) {
       hosts.push(new Host({
-        ...this.yolo.network[hostNames[i]],
+        ...this.yolo.host[hostNames[i]],
         name: hostNames[i],
       }));
     }
