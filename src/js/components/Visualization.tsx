@@ -4,7 +4,7 @@ import AppState from '../types/state';
 import { Info } from '../types/yolo';
 import Network from '../yoloparser/network';
 import Host from '../yoloparser/host';
-import Subnet from './Subnet';
+import NetworkComponent from './Network';
 
 const Visualization = (props: VisualizationProps) => {
   const { info, networks } = props;
@@ -12,37 +12,7 @@ const Visualization = (props: VisualizationProps) => {
     <div className="visualization">
       <h1>{info.title}</h1>
       <p>{info.description}</p>
-      {networks.map((network) => (
-        <div className="network" key={network.name}>
-          <h4>
-            <span>Network: </span>
-            {network.name}
-          </h4>
-          <ul>
-            <li>
-              <strong>CIDR: </strong>
-              {network.cidr}
-            </li>
-            <li>
-              <strong>Netmask: </strong>
-              {network.netmask}
-            </li>
-            <li>
-              <strong>Gateway: </strong>
-              {network.gateway}
-            </li>
-            <li>
-              <strong>DNS:</strong>
-              <ul>
-                {network.dns.map((dns) => (<li>{dns}</li>))}
-              </ul>
-            </li>
-          </ul>
-          <div className="subnets">
-            {network.subnets.map((subnet) => <Subnet data={subnet} key={subnet.name} />)}
-          </div>
-        </div>
-      ))}
+      {networks.map((network) => (<NetworkComponent data={network} key={network.name} />))}
     </div>
   );
 };
