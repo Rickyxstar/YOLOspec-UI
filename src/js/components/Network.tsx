@@ -27,7 +27,7 @@ export default (props: NetworkProps) => {
         <li>
           <strong>DNS:</strong>
           <ul>
-            {data.dns.map((dns) => (<li>{dns}</li>))}
+            {data.dns.map((dns) => (<li key={dns}>{dns}</li>))}
           </ul>
         </li>
       </ul>

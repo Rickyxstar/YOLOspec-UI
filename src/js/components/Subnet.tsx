@@ -1,8 +1,11 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 import Subnet from '../yoloparser/subnet';
+import { updateShowSubnetHosts as updateShowSubnetHostsAction } from '../store/actions/Visualization';
 
-export default (props: SubnetProps) => {
-  const { data } = props;
+const SubnetComponent = (props: SubnetProps) => {
+  const { data, updateShowSubnetHosts } = props;
 
   return (
     <div className="col-sm-4">
@@ -11,7 +14,13 @@ export default (props: SubnetProps) => {
           <span>Subnet: </span>
           {data.name}
           <div className="float-right">
-            <button type="button" className="btn btn-link">Hosts</button>
+            <button
+              type="button"
+              className="btn btn-link"
+              onClick={() => updateShowSubnetHosts(`network.${data.name}`)}
+            >
+              Hosts
+            </button>
           </div>
         </h4>
         <ul>
@@ -43,4 +52,16 @@ export default (props: SubnetProps) => {
 
 interface SubnetProps {
   data: Subnet
+  updateShowSubnetHosts: typeof updateShowSubnetHostsAction;
 }
+
+const mapState = () => ({});
+
+const dispatchProps = (dispatch: Dispatch) => bindActionCreators(
+  {
+    updateShowSubnetHosts: updateShowSubnetHostsAction,
+  },
+  dispatch,
+);
+
+export default connect(mapState, dispatchProps)(SubnetComponent);
