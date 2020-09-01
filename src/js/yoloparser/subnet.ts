@@ -1,13 +1,18 @@
 import BaseNetworkResource from './baseNetworkResource';
 import { Subnet } from '../types/yolo';
+import { calculateAddressFromBinary, getBinaryNotationFromCidr, calculateAddressBits } from './utils';
 
 export default class extends BaseNetworkResource {
   availableIPs: number;
+
+  // The broadcast address for this subnet
+  broadcast: string;
 
   constructor(subnet: Subnet) {
     super(subnet);
 
     this.availableIPs = this.getAvailableIPs();
+    this.broadcast = this.getBroadcast();
   }
 
   getAvailableIPs(): number {
@@ -15,5 +20,22 @@ export default class extends BaseNetworkResource {
     const networkBits = parseInt(this.cidr.split('/')[1], 10);
 
     return (2 ** (32 - networkBits)) - 2;
+  }
+
+  getBroadcast(): string {
+    // Get wildcard bits
+    const wildcardBinaryNotation = getBinaryNotationFromCidr(this.cidr, true);
+
+    // Get address bits
+    const addressBinaryNotation = calculateAddressBits(this.cidr);
+
+    // Or wildcardBinaryNotation and addressBinaryNotation together
+    const resultBits: boolean[] = [];
+    for (let i = 0; i < wildcardBinaryNotation.length; i += 1) {
+      resultBits.push(wildcardBinaryNotation[i] || addressBinaryNotation[i]);
+    }
+
+    // Convert the result bits to base10 octets
+    return calculateAddressFromBinary(resultBits);
   }
 }

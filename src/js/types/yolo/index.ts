@@ -25,4 +25,5 @@ export interface Network extends BaseResource {
 
 export interface Subnet extends BaseResource {
   cidr: string
+  broadcast: string
 }

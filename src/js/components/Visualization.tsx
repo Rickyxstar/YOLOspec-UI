@@ -36,28 +36,36 @@ const Visualization = (props: VisualizationProps) => {
               </ul>
             </li>
           </ul>
-          {network.subnets.map((subnet) => (
-            <div className="subnet" key={subnet.name}>
-              <h4>
-                <span>Subnet: </span>
-                {subnet.name}
-              </h4>
-              <ul>
-                <li>
-                  <strong>CIDR: </strong>
-                  {subnet.cidr}
-                </li>
-                <li>
-                  <strong>Netmask: </strong>
-                  {subnet.netmask}
-                </li>
-                <li>
-                  <strong>Available IPs: </strong>
-                  {subnet.availableIPs}
-                </li>
-              </ul>
-            </div>
-          ))}
+          <div className="subnets">
+            {network.subnets.map((subnet) => (
+              <div className="col-sm-4" key={subnet.name}>
+                <div className="subnet">
+                  <h4>
+                    <span>Subnet: </span>
+                    {subnet.name}
+                  </h4>
+                  <ul>
+                    <li>
+                      <strong>CIDR: </strong>
+                      {subnet.cidr}
+                    </li>
+                    <li>
+                      <strong>Netmask: </strong>
+                      {subnet.netmask}
+                    </li>
+                    <li>
+                      <strong>Broadcast: </strong>
+                      {subnet.broadcast}
+                    </li>
+                    <li>
+                      <strong>Available IPs: </strong>
+                      {subnet.availableIPs}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       ))}
     </div>
