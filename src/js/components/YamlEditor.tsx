@@ -3,7 +3,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import YAML from 'yaml';
 import Yolo from '../yoloparser';
-import { updateInfo, updateNetworks, updateHosts, updateOS } from '../store/actions/Infrastructure';
+import {
+  updateInfo,
+  updateNetworks,
+  updateHosts,
+  updateOS,
+} from '../store/actions/Infrastructure';
 
 class YamlEditor extends React.Component<YamlEditorProps, YamlEditorState> {
   constructor(props: YamlEditorProps) {

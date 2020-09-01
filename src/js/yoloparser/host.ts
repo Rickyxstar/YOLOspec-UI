@@ -13,11 +13,14 @@ export default class {
 
   subnet: string;
 
+  os: string;
+
   constructor(host: Host) {
     this.name = host.name;
     this.description = host.description ? host.description : '';
     this.hostname = host.hostname;
     this.ipaddress = host.ip;
     this.subnet = host.subnet;
+    this.os = host.os;
   }
 }

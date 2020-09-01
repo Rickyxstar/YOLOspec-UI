@@ -1,8 +1,11 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import Host from '../yoloparser/host';
+import AppState from '../types/state';
+import OS from '../yoloparser/os';
 
-export default (props: HostProps) => {
-  const { data } = props;
+const HostComponent = (props: HostProps) => {
+  const { data, os } = props;
   const subnetParts = data.subnet.split('.');
 
   return (
@@ -25,6 +28,23 @@ export default (props: HostProps) => {
             <strong>Subnet: </strong>
             {subnetParts[subnetParts.length - 1]}
           </li>
+          {os
+            ? (
+              <li>
+                <strong>OS: </strong>
+                <ul>
+                  <li>
+                    <strong>Name: </strong>
+                    {os.name}
+                  </li>
+                  <li>
+                    <strong>Package Manager: </strong>
+                    {os.packagemanager}
+                  </li>
+                </ul>
+              </li>
+            )
+            : null}
         </ul>
       </div>
     </div>
@@ -33,4 +53,15 @@ export default (props: HostProps) => {
 
 interface HostProps {
   data: Host
+  os?: OS | undefined
 }
+
+const mapState = (state: AppState, ownProps: HostProps) => ({
+  os: state.infrastructure.os.find((os) => `os.${os.name}` === ownProps.data.os),
+});
+
+HostComponent.defaultProps = {
+  os: undefined,
+};
+
+export default connect(mapState)(HostComponent);
