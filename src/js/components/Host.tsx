@@ -3,6 +3,7 @@ import Host from '../yoloparser/host';
 
 export default (props: HostProps) => {
   const { data } = props;
+  const subnetParts = data.subnet.split('.');
 
   return (
     <div className="col-sm-4">
@@ -19,6 +20,10 @@ export default (props: HostProps) => {
           <li>
             <strong>IP Address: </strong>
             {data.ipaddress}
+          </li>
+          <li>
+            <strong>Subnet: </strong>
+            {subnetParts[subnetParts.length - 1]}
           </li>
         </ul>
       </div>
