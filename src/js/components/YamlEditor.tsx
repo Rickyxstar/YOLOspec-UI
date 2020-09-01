@@ -23,9 +23,30 @@ class YamlEditor extends React.Component<YamlEditorProps, YamlEditorState> {
 
   componentDidMount() {
     Axios.get('openyolo.yml')
-      .then((res) => this.setState({
-        yaml: res.data,
-      }))
+      .then((res) => {
+        let hasError = false;
+        const {
+          updateInfrastructureInfo,
+          updateInfrastructureNetworks,
+          updateInfrastructureHosts,
+          updateInfrastructureOS,
+        } = this.props;
+
+        try {
+          const yolo = new Yolo(YAML.parse(res.data));
+          updateInfrastructureInfo(yolo.getInfo());
+          updateInfrastructureNetworks(yolo.getNetworks());
+          updateInfrastructureHosts(yolo.getHosts());
+          updateInfrastructureOS(yolo.getOS());
+        } catch (_error) {
+          hasError = true;
+        }
+
+        this.setState({
+          hasError,
+          yaml: res.data,
+        });
+      })
       .catch(() => {});
   }
 
