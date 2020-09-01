@@ -50,7 +50,7 @@ export default class extends BaseNetworkResource {
     // Convert address to binary
     const addressBinaryNotation = calculateAddressBits(this.cidr);
 
-     // And binaryNotation and addressBinaryNotation together
+    // And binaryNotation and addressBinaryNotation together
     const resultBits: boolean[] = [];
     for (let i = 0; i < binaryNotation.length; i += 1) {
       resultBits.push(binaryNotation[i] && addressBinaryNotation[i]);
