@@ -35,3 +35,7 @@ export interface Host extends BaseResource {
   subnet: string
   os: string
 }
+
+export interface OS extends BaseResource {
+  packagemanager: string
+}

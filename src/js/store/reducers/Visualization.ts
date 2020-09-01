@@ -12,6 +12,12 @@ export default (state = initState, action: Visualization.Actions.Types): Visuali
         showSubnetHosts: action.showSubnetHosts,
       };
 
+    case 'HIDE_ALL_HOSTS':
+      return {
+        ...state,
+        showSubnetHosts: '',
+      };
+
     default:
       return state;
   }

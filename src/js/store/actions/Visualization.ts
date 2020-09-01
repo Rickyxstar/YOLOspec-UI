@@ -6,3 +6,9 @@ export const updateShowSubnetHosts = (showSubnetHosts: string): Visualization.Ac
     showSubnetHosts,
   }
 );
+
+export const hideAllHosts = (): Visualization.Actions.Types => (
+  {
+    type: Visualization.Actions.HIDE_ALL_HOSTS,
+  }
+);

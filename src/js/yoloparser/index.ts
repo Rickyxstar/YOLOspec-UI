@@ -1,6 +1,7 @@
 import { Info } from '../types/yolo';
 import Network from './network';
 import Host from './host';
+import OS from './os';
 
 export default class {
   yolo: any;
@@ -62,5 +63,19 @@ export default class {
     }
 
     return hosts;
+  }
+
+  getOS(): OS[] {
+    const osList: OS[] = [];
+
+    const osNames = Object.keys(this.yolo.os);
+    for (let i = 0; i < osNames.length; i += 1) {
+      osList.push(new OS({
+        ...this.yolo.host[osNames[i]],
+        name: osNames[i],
+      }));
+    }
+
+    return osList;
   }
 }

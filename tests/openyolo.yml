@@ -52,6 +52,6 @@ host:
 
 os:
   centos7:
-    package_manager: yum
+    packagemanager: yum
   ubuntu:
-    package_manager: apt-get
+    packagemanager: apt-get
