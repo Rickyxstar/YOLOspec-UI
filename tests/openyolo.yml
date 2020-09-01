@@ -1,5 +1,6 @@
 yolo: "1.0"
 info:
+  title: Ricky's Application
   description: A sample application
 
 network:
