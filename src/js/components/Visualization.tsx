@@ -14,15 +14,23 @@ const Visualization = (props: VisualizationProps) => {
     hosts,
     showSubnetHosts,
   } = props;
+
+  const filteredHosts = hosts.filter((host) => host.subnet === showSubnetHosts);
+
   return (
     <div className="visualization">
       <h1>{info.title}</h1>
       <p>{info.description}</p>
       {networks.map((network) => (<NetworkComponent data={network} key={network.name} />))}
-      <div className="hosts">
-        {hosts.filter((host) => host.subnet === showSubnetHosts)
-          .map((host) => (<HostComponent data={host} key={host.name} />))}
-      </div>
+      {filteredHosts.length
+        ? (
+          <div className="hosts">
+            <div className="row">
+              {filteredHosts.map((host) => (<HostComponent data={host} key={host.name} />))}
+            </div>
+          </div>
+        )
+        : null}
     </div>
   );
 };
