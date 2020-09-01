@@ -71,7 +71,7 @@ export default class {
     const osNames = Object.keys(this.yolo.os);
     for (let i = 0; i < osNames.length; i += 1) {
       osList.push(new OS({
-        ...this.yolo.host[osNames[i]],
+        ...this.yolo.os[osNames[i]],
         name: osNames[i],
       }));
     }
