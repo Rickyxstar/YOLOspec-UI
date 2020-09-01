@@ -5,6 +5,7 @@ import { Info } from '../types/yolo';
 import Network from '../yoloparser/network';
 import Host from '../yoloparser/host';
 import NetworkComponent from './Network';
+import HostComponent from './Host';
 
 const Visualization = (props: VisualizationProps) => {
   const {
@@ -18,8 +19,10 @@ const Visualization = (props: VisualizationProps) => {
       <h1>{info.title}</h1>
       <p>{info.description}</p>
       {networks.map((network) => (<NetworkComponent data={network} key={network.name} />))}
-      {hosts.filter((host) => host.subnet === showSubnetHosts)
-        .map((host) => (<div>{host.hostname}</div>))}
+      <div className="hosts">
+        {hosts.filter((host) => host.subnet === showSubnetHosts)
+          .map((host) => (<HostComponent data={host} key={host.name} />))}
+      </div>
     </div>
   );
 };
