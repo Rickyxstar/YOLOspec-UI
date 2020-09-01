@@ -10,6 +10,9 @@ export default (props: SubnetProps) => {
         <h4>
           <span>Subnet: </span>
           {data.name}
+          <div className="float-right">
+            <button type="button" className="btn btn-link">Hosts</button>
+          </div>
         </h4>
         <ul>
           <li>
