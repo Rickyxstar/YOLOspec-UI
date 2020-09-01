@@ -24,6 +24,31 @@ host:
     ip: 192.168.1.3
     subnet: network.main.api
     os: os.centos7
+  api2:
+    hostname: api_2
+    ip: 192.168.1.4
+    subnet: network.main.api
+    os: os.centos7
+  mysql:
+    hostname: mysql_1
+    ip: 192.168.1.17
+    subnet: network.main.database
+    os: os.centos7
+  mysql read rep1:
+    hostname: mysql_2
+    ip: 192.168.1.18
+    subnet: network.main.database
+    os: os.centos7
+  mysql read rep2:
+    hostname: mysql_3
+    ip: 192.168.1.18
+    subnet: network.main.database
+    os: os.centos7
+  guacamole:
+    hostname: guacamole
+    ip: 192.168.1.33
+    subnet: network.main.management
+    os: os.centos7
 
 os:
   centos7:
