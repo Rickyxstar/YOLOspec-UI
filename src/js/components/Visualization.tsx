@@ -58,7 +58,7 @@ const Visualization = (props: VisualizationProps) => {
                       {subnet.networkAddress}
                     </li>
                     <li>
-                      <strong>Broadcast: </strong>
+                      <strong>Broadcast Address: </strong>
                       {subnet.broadcast}
                     </li>
                     <li>
