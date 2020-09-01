@@ -26,6 +26,7 @@ export default class extends BaseNetworkResource {
       resultSubnets.push(new Subnet({
         ...subnets[subnetName[i]],
         name: subnetName[i],
+        networkName: this.name,
       }));
     }
     this.subnets = resultSubnets;

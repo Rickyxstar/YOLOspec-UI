@@ -3,6 +3,8 @@ import { Subnet } from '../types/yolo';
 import { calculateAddressFromBinary, getBinaryNotationFromCidr, calculateAddressBits } from './utils';
 
 export default class extends BaseNetworkResource {
+  networkName: string;
+
   availableIPs: number;
 
   // The broadcast address for this subnet
@@ -14,6 +16,7 @@ export default class extends BaseNetworkResource {
   constructor(subnet: Subnet) {
     super(subnet);
 
+    this.networkName = subnet.networkName;
     this.availableIPs = this.getAvailableIPs();
     this.broadcast = this.getBroadcast();
     this.networkAddress = this.getNetworkAddress();

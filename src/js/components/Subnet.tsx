@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import Subnet from '../yoloparser/subnet';
-import { updateShowSubnetHosts as updateShowSubnetHostsAction } from '../store/actions/Visualization'
+import { updateShowSubnetHosts as updateShowSubnetHostsAction } from '../store/actions/Visualization';
 
 const SubnetComponent = (props: SubnetProps) => {
   const { data, updateShowSubnetHosts } = props;
@@ -17,7 +17,7 @@ const SubnetComponent = (props: SubnetProps) => {
             <button
               type="button"
               className="btn btn-link"
-              onClick={() => updateShowSubnetHosts(data.name)}
+              onClick={() => updateShowSubnetHosts(`network.${data.networkName}.${data.name}`)}
             >
               Hosts
             </button>
