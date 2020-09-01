@@ -27,6 +27,7 @@ const mapState = (state: AppState) => ({
   info: state.infrastructure.info,
   networks: state.infrastructure.networks,
   hosts: state.infrastructure.hosts,
+  showSubnetHosts: state.visualization.showSubnetHosts,
 });
 
 export default connect(mapState)(Visualization);
