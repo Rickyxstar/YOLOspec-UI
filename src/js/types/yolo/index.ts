@@ -27,3 +27,10 @@ export interface Subnet extends BaseResource {
   cidr: string
   broadcast: string
 }
+
+export interface Host extends BaseResource {
+  hostname: string
+  ip: string
+  subnet: string
+  os: string
+}

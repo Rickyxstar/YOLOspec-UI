@@ -1,5 +1,6 @@
 import { Info } from '../types/yolo';
 import Network from './network';
+import Host from './host';
 
 export default class {
   yolo: any;
@@ -47,5 +48,19 @@ export default class {
     }
 
     return networks;
+  }
+
+  getHosts(): Host[] {
+    const hosts: Host[] = [];
+
+    const hostNames = Object.keys(this.yolo.host);
+    for (let i = 0; i < hostNames.length; i += 1) {
+      hosts.push(new Host({
+        ...this.yolo.network[hostNames[i]],
+        name: hostNames[i],
+      }));
+    }
+
+    return hosts;
   }
 }
