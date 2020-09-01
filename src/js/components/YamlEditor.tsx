@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import Axios from 'axios';
 import { bindActionCreators, Dispatch } from 'redux';
 import YAML from 'yaml';
 import Yolo from '../yoloparser';
@@ -18,6 +19,12 @@ class YamlEditor extends React.Component<YamlEditorProps, YamlEditorState> {
       hasError: false,
       yaml: '',
     };
+  }
+
+  componentDidMount() {
+    Axios.get('openyolo.yml')
+    .then((res) => this.setState({yaml: res.data}))
+    .catch((e) => console.log(e))
   }
 
   changeYAML(e: React.ChangeEvent<HTMLTextAreaElement>) {

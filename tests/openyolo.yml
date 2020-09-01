@@ -33,17 +33,17 @@ host:
     hostname: mysql_1
     ip: 192.168.1.17
     subnet: network.main.database
-    os: os.centos7
+    os: os.ubuntu
   mysql read rep1:
     hostname: mysql_2
     ip: 192.168.1.18
     subnet: network.main.database
-    os: os.centos7
+    os: os.ubuntu
   mysql read rep2:
     hostname: mysql_3
     ip: 192.168.1.18
     subnet: network.main.database
-    os: os.centos7
+    os: os.ubuntu
   guacamole:
     hostname: guacamole
     ip: 192.168.1.33
