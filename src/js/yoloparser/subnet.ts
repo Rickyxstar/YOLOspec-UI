@@ -8,11 +8,15 @@ export default class extends BaseNetworkResource {
   // The broadcast address for this subnet
   broadcast: string;
 
+  // The network address for this subnet
+  networkAddress: string;
+
   constructor(subnet: Subnet) {
     super(subnet);
 
     this.availableIPs = this.getAvailableIPs();
     this.broadcast = this.getBroadcast();
+    this.networkAddress = this.getNetworkAddress();
   }
 
   getAvailableIPs(): number {
@@ -36,6 +40,22 @@ export default class extends BaseNetworkResource {
     }
 
     // Convert the result bits to base10 octets
+    return calculateAddressFromBinary(resultBits);
+  }
+
+  getNetworkAddress(): string {
+    // Convert cider to binary
+    const binaryNotation = getBinaryNotationFromCidr(this.cidr);
+
+    // Convert address to binary
+    const addressBinaryNotation = calculateAddressBits(this.cidr);
+
+     // And binaryNotation and addressBinaryNotation together
+    const resultBits: boolean[] = [];
+    for (let i = 0; i < binaryNotation.length; i += 1) {
+      resultBits.push(binaryNotation[i] && addressBinaryNotation[i]);
+    }
+
     return calculateAddressFromBinary(resultBits);
   }
 }
