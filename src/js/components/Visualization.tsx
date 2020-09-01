@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import AppState from '../types/state';
 import { Info } from '../types/yolo';
 import Network from '../yoloparser/network';
+import Host from '../yoloparser/host';
 
 const Visualization = (props: VisualizationProps) => {
   const { info, networks } = props;
@@ -78,12 +79,14 @@ const Visualization = (props: VisualizationProps) => {
 
 interface VisualizationProps {
   info: Info,
-  networks: Network[]
+  networks: Network[],
+  hosts: Host[];
 }
 
 const mapState = (state: AppState) => ({
   info: state.infrastructure.info,
   networks: state.infrastructure.networks,
+  hosts: state.infrastructure.hosts,
 });
 
 export default connect(mapState)(Visualization);
