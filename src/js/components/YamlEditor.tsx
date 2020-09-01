@@ -23,8 +23,10 @@ class YamlEditor extends React.Component<YamlEditorProps, YamlEditorState> {
 
   componentDidMount() {
     Axios.get('openyolo.yml')
-    .then((res) => this.setState({yaml: res.data}))
-    .catch((e) => console.log(e))
+      .then((res) => this.setState({
+        yaml: res.data,
+      }))
+      .catch(() => {});
   }
 
   changeYAML(e: React.ChangeEvent<HTMLTextAreaElement>) {
