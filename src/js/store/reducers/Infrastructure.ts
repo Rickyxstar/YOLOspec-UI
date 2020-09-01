@@ -7,6 +7,7 @@ const initState: Infrastructure.State = {
   },
   networks: [],
   hosts: [],
+  os: [],
 };
 
 export default (state = initState, action: Infrastructure.Actions.Types): Infrastructure.State => {
@@ -27,6 +28,12 @@ export default (state = initState, action: Infrastructure.Actions.Types): Infras
       return {
         ...state,
         hosts: action.hosts,
+      };
+
+    case 'UPDATE_OS':
+      return {
+        ...state,
+        os: action.os,
       };
 
     default:

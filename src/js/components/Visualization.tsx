@@ -6,6 +6,7 @@ import Network from '../yoloparser/network';
 import Host from '../yoloparser/host';
 import NetworkComponent from './Network';
 import HostComponent from './Host';
+import OS from '../yoloparser/os';
 
 const Visualization = (props: VisualizationProps) => {
   const {
@@ -39,7 +40,8 @@ interface VisualizationProps {
   info: Info,
   networks: Network[]
   hosts: Host[]
-  showSubnetHosts: string
+  showSubnetHosts: string,
+  os: OS[]
 }
 
 const mapState = (state: AppState) => ({
@@ -47,6 +49,7 @@ const mapState = (state: AppState) => ({
   networks: state.infrastructure.networks,
   hosts: state.infrastructure.hosts,
   showSubnetHosts: state.visualization.showSubnetHosts,
+  os: state.infrastructure.os,
 });
 
 export default connect(mapState)(Visualization);
